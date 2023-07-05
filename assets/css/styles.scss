@@ -1,0 +1,225 @@
+// https://marketplace.visualstudio.com/items?itemName=glenn2223.live-sass
+
+// Normalize
+@import url("normalize.css");
+
+$font-family: 'Open Sans', sans-serif;
+
+// Colors
+$color-purple: #6554AF;
+$color-purple-500: #9575DE;
+$color-accent: $color-purple;
+$color-black: #000000;
+$color-white: #ffffff;
+$color-grey: #f2f2f2;
+$color-darkgrey: #dddddd;
+$color-error: #f00000;
+
+// Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 682px;
+$breakpoint-xl: 1200px;
+
+// Body
+body {
+  color: $color-black;
+  font-family: $font-family;
+  font-weight: 400;
+  overflow-y: scroll;
+}
+
+// Header
+header {
+  align-items: center;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  margin: 15px;
+
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+  }
+}
+
+// Main container
+main {
+  margin: 15px;
+}
+
+// Table
+.table {
+  border-collapse: collapse;
+  font-size: 16px;
+  width: 100%;
+
+  td,
+  th {
+    font-size: 16px;
+    border: 1px solid $color-darkgrey;
+    padding: 8px;
+
+    @media (max-width: $breakpoint-md) {
+      &.mhidden {
+        display: none;
+      }
+    }
+
+    @media (max-width: $breakpoint-xl) {
+      &.mhidden:not(.mhidden--sm) {
+        display: none;
+      }
+    }
+  }
+
+  tr {
+    &:nth-child(even){
+      background-color: $color-grey;
+    }
+
+    &:hover {
+      background-color: $color-darkgrey;
+    }
+  }
+
+  th {
+    background-color: $color-accent;
+    color: $color-white;
+    font-weight: 500;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    text-align: left;
+  }
+}
+
+// Modal
+.modal {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  .modal__content {
+    background-color: $color-white;
+    border-radius: 4px;
+    padding: 20px;
+    position: relative;
+    width: 100%;
+    margin: 20px;
+
+    @media (min-width: $breakpoint-sm) {
+      width: 400px;
+    }
+  }
+
+  .modal__form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    @media (min-width: $breakpoint-sm) {
+      width: 400px;
+    }
+
+    &--error-message {
+      color: $color-error;
+      font-size: 12px;
+    }
+  }
+
+  .close-modal {
+    cursor: pointer;
+    font-size: 28px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+
+// Input
+input.form__control {
+  height: 40px;
+  padding: 0 16px;
+  font-size: 16px;
+  background-color: $color-white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border: 1px solid #757575;
+  border-radius: 4px;
+  outline: none;
+
+  &:focus:not(&--error) {
+    border-color: $color-accent;
+    box-shadow: 0 0 0 3px #e7f0f4;
+  }
+
+  &--error {
+    border-color: $color-error;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Button
+.btn {
+  align-items: center;
+  background: $color-accent;
+  border-radius: 3px;
+  border: 1px solid $color-accent;
+  color: $color-white;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 700;
+  height: 30px;
+  justify-content: center;
+  letter-spacing: 1px;
+  padding: 0 16px;
+  text-transform: uppercase;
+  transition: background-color 0.3s;
+
+  @media (min-width: $breakpoint-sm) {
+    font-size: 14px;
+    height: 40px;
+  }
+
+  &:hover,
+  &:active {
+    background: $color-purple-500;
+    border-color: $color-purple-500;
+  }
+
+  &--secondary {
+    background: #FAFBFC;
+    border: 1px solid #d7d7d7;
+    color: #24292E;
+    font-weight: 400;
+
+    &:hover,
+    &:focus {
+      background: #FAFBFC;
+      border-color: #bcbcbc;
+    }
+  }
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
